@@ -1,0 +1,52 @@
+import React from 'react'
+import {View, Text, TouchableOpacity, StyleSheet, TouchableNativeFeedback} from 'react-native'
+
+interface Props {
+    title : string
+    position : 'right' | 'left'
+    onPress : () => void
+}
+
+export const Fab = ({title, onPress, position}:Props) => {
+    console.log(title);
+
+    return (
+        <View>
+
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    fabLocation : {
+        position: 'absolute',
+        bottom: 5
+    },
+    right :{
+        right: 5
+    },
+    left :{
+        left: 5
+    },
+    fab:{
+        backgroundColor: '#5856D6',
+        width: 60,
+        height: 60,
+        borderRadius: 100,
+        justifyContent: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+    },
+    fabText:{
+        color: "white",
+        fontSize: 25,
+        fontWeight: 'bold',
+        alignSelf : 'center',
+    }
+})
