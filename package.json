@@ -20,6 +20,8 @@
     "pod-install": "^0.1.31",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-aws3": "^0.0.9",
+    "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^2.1.1",
     "react-native-image-picker": "^4.7.0",
     "react-native-reanimated": "^2.3.1",
