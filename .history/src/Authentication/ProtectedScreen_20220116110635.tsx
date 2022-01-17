@@ -1,0 +1,22 @@
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+
+export const ProtectedScreen = () => {
+    return (
+        <View style = {styles.container}>
+            <Text>Protected</Text>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    title : {
+        fontSize: 20,
+        marginBottom: 20
+    }
+});
