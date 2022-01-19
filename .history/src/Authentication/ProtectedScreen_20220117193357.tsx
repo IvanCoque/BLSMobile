@@ -2,15 +2,14 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer'
 import React, { useContext, useEffect, useState } from 'react'
 import { SettingsScreen } from '../screens/Navigation/SettingsScreen'
-import { Button, Image, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import { Button, Image, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 import { AuthContext } from '../context/AuthContext'
 const Drawer = createDrawerNavigator()
 export const ProtectedScreen = () => {
-    const {width} = useWindowDimensions();
     return (
             <Drawer.Navigator
-                drawerType={width >= 768 ? 'permanent' : 'front'}
+            drawerType={width >= 768 ? 'permanent' : 'front'}
                 drawerContent = { (props)=> <MenuInterno {...props}/>}
             >
                 <Drawer.Screen name="SettingsScreen" options={{ title : 'Home'}} component={SettingsScreen} />

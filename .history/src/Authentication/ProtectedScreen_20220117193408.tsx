@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer'
 import React, { useContext, useEffect, useState } from 'react'
 import { SettingsScreen } from '../screens/Navigation/SettingsScreen'
-import { Button, Image, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import { Button, Image, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 import { AuthContext } from '../context/AuthContext'
 const Drawer = createDrawerNavigator()
