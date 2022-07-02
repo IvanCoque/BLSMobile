@@ -18,8 +18,7 @@ export const HomeScreen = () => {
         <TouchableOpacity
             activeOpacity={0.6}
             onPress = { () =>{
-                navigation.navigate('Reserva de Citas'
-                )
+                navigation.navigate('Reserva de Citas')
             }}
         >
             <View style = {styles.card}>

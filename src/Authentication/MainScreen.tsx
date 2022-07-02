@@ -10,52 +10,52 @@ import { useForm } from '../hooks/useForm'
 import { RootStackParams } from '../Navigation/StackNavigator'
 import { loginStyles } from '../theme/loginTheme'
 import {Image} from 'react-native'
-interface Props extends NativeStackScreenProps<RootStackParams,'MainScreen'>{};
+import { useNavigation } from '@react-navigation/native'
+interface Props extends NativeStackScreenProps<RootStackParams,'MainScreen' | any>{};
 
 export const MainScreen = ({navigation} : Props) => {
-    /*
-    const [nombreUsuario, onChangeNombreUsuario] = useState("")
-    const [contrasenia, onChangeContrasenia] = useState("")
+    
+    const [nombreUsuario, onChangeNombreUsuario] = useState("");
+    const [contrasenia, onChangeContrasenia] = useState("");
     const {width,height} = useWindowDimensions();
-     const navigation = useNavigation<NativeStackNavigationProp<any,any>>();
-   
-    */
-   
-    // const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
-    // //USEFORM
-    // const {email, password, onChange} = useForm({
-    //     email : '',
-    //     password : '',
-    // })
+    const navigation2 = useNavigation<NativeStackNavigationProp<any,any>>();
+   
+    const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
-    // useEffect(() => {
-    //     if(errorMessage .length ===0) return;
-    //     Alert.alert(
-    //         'Login incorrecto', 
-    //         errorMessage,
-    //         [
-    //             {
-    //                 text:'OK',
-    //                 onPress : removeError
-    //             }
-    //         ]
-    //         )
-    //     return () => {
+    //USEFORM
+    const {email, password, onChange} = useForm({
+        email : '',
+        password : '',
+    });
+
+    useEffect(() => {
+        if(errorMessage .length ===0) return;
+        Alert.alert(
+            'Login incorrecto', 
+            errorMessage,
+            [
+                {
+                    text:'OK',
+                    onPress : removeError
+                }
+            ]
+            )
+        return () => {
             
-    //     }
-    // }, [errorMessage])
+        }
+    }, [errorMessage])
 
 
-    // const onLogin = () =>{
-    //     console.log({email, password})
-    //     Keyboard.dismiss();
-    //     const obj = {
-    //         email,
-    //         password
-    //     }
-    //     signIn(obj)
-    // }
+    const onLogin = () =>{
+        console.log({email, password})
+        Keyboard.dismiss();
+        const obj = {
+            email,
+            password
+        }
+        signIn(obj)
+    }
 
     return (
             <>
@@ -98,10 +98,10 @@ export const MainScreen = ({navigation} : Props) => {
                                 <TouchableOpacity
                                     activeOpacity={0.8}
                                     style = {loginStyles.button}
-                                    // onPress = {onLogin}
+                                    onPress ={()=>{navigation2.replace('StudentScreen')}}
                                 >
                                     <Image
-                                        source={require('../assets/Start/startGame.png')}
+                                        source={require('../../assets/Start/startGame.png')}
                                         style={{
                                             width: 70,
                                             height: 70,
@@ -115,16 +115,13 @@ export const MainScreen = ({navigation} : Props) => {
                             <View style = {loginStyles.newUserContainer}>
                                         <TouchableOpacity
                                             activeOpacity={.8}
-                                            onPress ={()=>{navigation.replace('RegisterScreen')}}
+                                            onPress ={()=>{navigation2.replace('RegisterScreen')}}
                                         >
                                             <Text style = {loginStyles.buttonText}>Soy Profe</Text>
                                         </TouchableOpacity>
                             </View>
                         </View>
-                        
                     </KeyboardAvoidingView>
-                
-
                 </GradientBackground>
             </>
         )

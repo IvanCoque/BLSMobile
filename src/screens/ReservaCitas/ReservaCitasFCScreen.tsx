@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Alert, Button, Dimensions, Image, Modal, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import { Consultorio, IdEspecialidadGenerar,IdProfesionalGenerar, ReservaCita } from '../../interfaces/appInterfaces';
-import dermatologiaApi from '../../api/dermatologiaApi';
+import dermatologiaApi from '../../api/basicLearningSchoolApi';
 import EventCalendar from 'react-native-events-calendar'
 import { Fab } from '../../components/Fab';
 import DateTimePicker from '@react-native-community/datetimepicker';

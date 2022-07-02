@@ -1,7 +1,7 @@
 import React, {createContext, useReducer, useEffect} from 'react'
 import AsyncStorage  from '@react-native-async-storage/async-storage';
 
-import dermatologiaApi from '../api/dermatologiaApi';
+import dermatologiaApi from '../api/basicLearningSchoolApi';
 import { Usuario, LoginResponse, LoginData, RegisterData } from '../interfaces/appInterfaces'
 import { authReducer, AuthState } from './authReducer';
 type AuthContextProps = {

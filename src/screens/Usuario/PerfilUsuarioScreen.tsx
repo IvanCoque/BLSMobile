@@ -16,7 +16,7 @@ import {RNS3} from 'react-native-aws3';
 import { Picker } from '@react-native-picker/picker';
 import { LoadingScreen } from '../Navigation/LoadingScreen';
 import { GradientBackground } from '../../components/GradientBackground';
-import dermatologiaApi from '../../api/dermatologiaApi';
+import dermatologiaApi from '../../api/basicLearningSchoolApi';
 
 export const PerfilUsuario = () => {
 
@@ -67,7 +67,7 @@ export const PerfilUsuario = () => {
             }
         }
 
-        launchImageLibrary(options,response => {
+        launchImageLibrary((options,response) => {
             if(response.errorCode){
                 console.log(response.errorMessage);
             } else if (response.didCancel){

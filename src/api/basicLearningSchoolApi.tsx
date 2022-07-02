@@ -2,17 +2,17 @@ import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const baseURL = 'http://localhost:5000/api'
 
-const dermatologiaApi = axios.create({baseURL});
+const basicLearningSchoolApi = axios.create({baseURL});
 //Middleware para interceptar las solicitudes
-dermatologiaApi.interceptors.request.use(
+basicLearningSchoolApi.interceptors.request.use(
     async(config) => {
         const token = await AsyncStorage.getItem('token');
         if(token){
             
-            config.headers['x-access-token']  = token;
+            (config as any).headers['x-access-token']  = token;
         }
         return config;
     }
 )
 
-export default dermatologiaApi;
+export default basicLearningSchoolApi;

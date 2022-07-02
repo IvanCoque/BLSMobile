@@ -15,7 +15,7 @@ import { styles } from '../theme/appTheme';
 import { Axios } from 'axios';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import {RegisterData} from '../interfaces/appInterfaces';
-import dermatologiaApi from '../api/dermatologiaApi';
+import dermatologiaApi from '../api/basicLearningSchoolApi';
 //import fs from 'react-native-fs';
 import {RNS3} from 'react-native-aws3';
 

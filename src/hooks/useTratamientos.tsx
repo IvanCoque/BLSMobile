@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import dermatologiaApi from "../api/dermatologiaApi";
+import dermatologiaApi from "../api/basicLearningSchoolApi";
 import { Tratamiento } from "../interfaces/appInterfaces";
 
 export const useTratamientos = ({historiaClinicaId}:any) => {
