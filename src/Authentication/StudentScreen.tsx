@@ -1,9 +1,21 @@
 import { flexbox, height } from '@mui/system'
-import React from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { Animated, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import { GradientBackground } from '../components/GradientBackground'
+import { loginStyles } from '../theme/loginTheme'
 
 export const StudentScreen = () => {
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    useEffect(() => {
+        Animated.timing(fadeAnim, {
+             toValue: 1,
+             useNativeDriver : true,
+             duration : 5000
+          }).start();
+        return () => {
+            
+        };
+    }, [])
   return (
     <GradientBackground colors = {['white','#80aaff']}>
         <ScrollView contentContainerStyle={styles.mainContainer}
@@ -12,13 +24,42 @@ export const StudentScreen = () => {
                 styles.topContainer
             }
             >
-                <Text style={styles.topText}>Hola amiguito, escribe tu nombre</Text>
+                <Animated.Text style={[
+                        styles.topText,
+                        {
+                            opacity : fadeAnim
+                        }
+                    ]}>
+                        Hola amiguito
+                </Animated.Text>
+                
             </View>
-            <View style={
-                styles.bottomContainer
+            <Animated.View style={[
+                styles.bottomContainer,
+                {
+                    opacity : fadeAnim
+                }
+            ]
             }>
-                <Text style={styles.bottomText}>HOLA</Text>
-            </View>
+                <Animated.Image
+                    source={require("../../assets/Home/munequito.png")}
+                    width ={60}
+                    height={60}
+                />
+                    
+                <TextInput
+                        placeholder='Ingresa tu nombre'
+                        placeholderTextColor = 'rgba(0,0,0,0.4)'
+                        
+                        underlineColorAndroid="black"
+                        style = {styles.inputText}
+                        selectionColor='black'
+                        // onChangeText={ (value) => onChange(value, 'cedula')}
+                        // value = {cedula}  
+                        // onSubmitEditing={onRegister}
+                        autoCorrect={false}
+                    />
+            </Animated.View>
                    
         </ScrollView>
     </GradientBackground>
@@ -34,21 +75,25 @@ const styles = StyleSheet.create({
         justifyContent : 'center',
         alignItems : 'center',
         backgroundColor : 'transparent',
-        paddingVertical : 30,
+        paddingTop : 60,
         paddingHorizontal : 30
     },
     bottomContainer : {
         flex : 4,
         alignItems : 'center',
-        backgroundColor : 'red',
-        paddingVertical : 30
+        backgroundColor : 'transparent',
+        paddingVertical : 60
     },
     topText : {
-        fontSize : 40,
-        color: 'green',
+        fontSize : 50,
+        color: 'rgba(0, 0, 0, 0.9)',
     },
     bottomText : {
         fontSize : 30,
         color: 'green'
+    },
+    inputText : {
+        fontSize : 30,
+        color: 'rgba(0,0,0,0.8)'
     }
 })
