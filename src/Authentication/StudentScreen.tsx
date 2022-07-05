@@ -42,7 +42,7 @@ export const StudentScreen = () => {
             ]
             }>
                 <Animated.Image
-                    source={require("../../assets/Home/munequito.png")}
+                    source={require("../../assets/Home/munequito.jpg")}
                     width ={60}
                     height={60}
                 />
