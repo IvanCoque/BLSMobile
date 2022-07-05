@@ -6,8 +6,8 @@ import { MainScreen } from '../Authentication/MainScreen';
 import { ProtectedScreen } from '../Authentication/ProtectedScreen';
 import { AuthContext } from '../context/AuthContext';
 import { LoadingScreen } from '../screens/Navigation/LoadingScreen';
-import { GaleriaImagenes } from '../screens/GaleriaImagenes/GaleriaImagenes';
 import { StudentScreen } from '../Authentication/StudentScreen';
+import { PublicScreen } from '../Authentication/PublicScreen';
 /*
 import {PrimeraScreen} from '../Navigation/PrimeraScreen';
 import {SegundaScreen} from '../Navigation/SegundaScreen';
@@ -18,7 +18,8 @@ import {TerceraScreen} from '../Navigation/TerceraScreen';
      LoginScreen: undefined,
      RegisterScreen: undefined,
      ProtectedScreen : undefined,
-     StudentScreen : undefined
+     StudentScreen : undefined,
+     PublicScreen : undefined
  }
  const RootStack = createNativeStackNavigator<RootStackParams>();
 export const StackNavigator = () => {
@@ -49,7 +50,8 @@ export const StackNavigator = () => {
                         <RootStack.Screen name="MainScreen" options={{title:"Screen Principal"}} component={MainScreen}/>
                         <RootStack.Screen name="LoginScreen" options={{title:"Login"}} component={LoginScreen} />
                         <RootStack.Screen name="RegisterScreen" options={{title:"Registro"}} component={RegisterScreen} /> 
-                        <RootStack.Screen name="StudentScreen" options= {{title : "Home Alumno"}} component ={StudentScreen}/>          
+                        <RootStack.Screen name="StudentScreen" options= {{title : "Home Alumno"}} component ={StudentScreen}/>  
+                        <RootStack.Screen name="PublicScreen" options= {{title : "Public Alumno"}} component ={PublicScreen}/>           
                     </>
                 )
                     :

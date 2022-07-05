@@ -6,9 +6,8 @@ import { Button, Image, Text, TouchableOpacity, useWindowDimensions, View } from
 import { styles } from '../theme/appTheme'
 import { AuthContext } from '../context/AuthContext'
 import { TabsNavigator } from '../Navigation/TabsNavigator'
-import { GaleriaImagenes } from '../screens/GaleriaImagenes/GaleriaImagenes'
 const Drawer = createDrawerNavigator()
-export const ProtectedScreen = () => {
+export const PublicScreen = () => {
     const {width} = useWindowDimensions();
     return (
         <>
@@ -21,8 +20,6 @@ export const ProtectedScreen = () => {
                 }}
             >
                 <Drawer.Screen name="HomeScreen" options={{ title : 'Home'}} component={TabsNavigator} />
-                
-                <Drawer.Screen name="Galeria"  options={{title:"Galeria"}}  component={GaleriaImagenes} />
             </Drawer.Navigator>
      
         </>
@@ -42,7 +39,7 @@ const MenuInterno = ({navigation}:any)=>{
                             style={styles.avatarContainer}
                         >    
                             <Image 
-                                source={{uri: user.imagen}}
+                                source={{uri:`${user.imagen}`}}
                                 style={styles.avatar}
                             />
                         </View>

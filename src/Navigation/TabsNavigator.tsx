@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Estadisticas } from '../screens/Estadisticas/Estadisticas';
-import {ReservaCitasFCScreen} from '../screens/ReservaCitas/ReservaCitasFCScreen';
 import { PerfilUsuario } from '../screens/Usuario/PerfilUsuarioScreen';
 import { colores } from '../theme/appTheme';
 import { Platform, Text, View } from 'react-native';
@@ -42,16 +41,13 @@ return (
                     case 'Home' : 
                         iconName = 'home';
                     break;
-                    case 'Reserva de Citas':
-                        iconName = 'event-note';
-                    break
-                    case 'Historial de visitas':
+                    case 'Lenguaje':
                         iconName = 'pie-chart';
                     break
-                    case 'Perfil Usuario':
+                    case 'Matematicas':
                         iconName = 'account-box';
                     break
-                    case 'Avance del tratamiento' :
+                    case 'Ciencias Naturales' :
                         iconName = 'visibility'
                     break
 
@@ -68,10 +64,9 @@ return (
 
     >
         <BottomTabAndroid.Screen name="Home" options = {{tabBarLabel : 'Home'}} component={HomeScreen} />
-        <BottomTabAndroid.Screen name="Reserva de Citas" options = {{tabBarLabel : 'Reserva de citas'}} component={ReservaCitasFCScreen} />
-        <BottomTabAndroid.Screen name="Historial de visitas" options = {{tabBarLabel : 'Estadísticas'}} component={Estadisticas} />
-        <BottomTabAndroid.Screen name="Perfil Usuario" component={PerfilUsuario} />
-        <BottomTabAndroid.Screen name="Avance del tratamiento" options = {{tabBarLabel : 'Avances'}} component={AvancesScreen} />
+        <BottomTabAndroid.Screen name="Lenguaje" options = {{tabBarLabel : 'Lenguaje'}} component={Estadisticas} />
+        <BottomTabAndroid.Screen name="Matematicas" options = {{tabBarLabel : 'Matematicas'}} component={PerfilUsuario} />
+        <BottomTabAndroid.Screen name="Ciencias Naturales" options = {{tabBarLabel : 'Ciencias Naturales'}} component={AvancesScreen} />
      </BottomTabAndroid.Navigator>
 );
 }
@@ -92,25 +87,28 @@ const TabsIOSNavigator = () => {
                 console.log(route.name)
                 let iconName : string =""; 
                 switch(route.name){
-                    case 'Reserva de Citas':
-                        iconName = 'T1';
+                    case 'Home' :
+                        iconName = 'home'
+                    break;
+                    case 'Lenguaje':
+                        iconName = 'pie-chart';
                     break
-                    case 'Estadisticas':
-                        iconName = 'T2';
-                    break
-                    case 'Perfil Usuario':
+                    case 'Matematicas':
+                        iconName = 'T3';
+
+                    case 'Ciencias Naturales':
                         iconName = 'T3';
                     break
 
                 }
-                return <Text style={{color}}>{iconName}</Text>
+                return <Text><Icon name={iconName} size={22} color={color} /></Text>;
             }
         }) }
     >
-        <BottomTabIOS.Screen name="Reserva de Citas" component={ReservaCitasScreen}  />
-        <BottomTabIOS.Screen name="Estadisticas" component={Estadisticas} />
-        <BottomTabIOS.Screen name="Perfil Usuario" component={PerfilUsuario} />
-        <BottomTabIOS.Screen name="Avance del tratamiento" options = {{tabBarLabel : 'Avances'}} component={GaleriaImagenes} />
-    </BottomTabIOS.Navigator>
+        <BottomTabIOS.Screen name="Home" options = {{tabBarLabel : 'Home'}} component={HomeScreen} />
+        <BottomTabIOS.Screen name="Lenguaje" options = {{tabBarLabel : 'Lenguaje'}} component={Estadisticas} />
+        <BottomTabIOS.Screen name="Matematicas" options = {{tabBarLabel : 'Matematicas'}} component={PerfilUsuario} />
+        <BottomTabIOS.Screen name="Ciencias Naturales" options = {{tabBarLabel : 'Ciencias Naturales'}} component={AvancesScreen} />
+      </BottomTabIOS.Navigator>
   );
 }

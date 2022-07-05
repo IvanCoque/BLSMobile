@@ -3,6 +3,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { AuthProvider } from './src/context/AuthContext'
 import { StackNavigator } from './src/Navigation/StackNavigator'
+import { PublicProvider } from './src/context/PublicContext'
 
 const App = () => {
   return (
@@ -38,9 +39,12 @@ const App = () => {
 }
 const AppState = ({children}:any) =>{
   return(
-    <AuthProvider>
-      {children}
-    </AuthProvider>
+    <PublicProvider>
+        <AuthProvider>
+        {children}
+      </AuthProvider>
+    </PublicProvider>
+    
   )  
 }
 

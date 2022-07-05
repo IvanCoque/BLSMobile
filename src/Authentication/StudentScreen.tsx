@@ -1,10 +1,20 @@
 import { flexbox, height } from '@mui/system'
-import React, { useEffect, useRef } from 'react'
-import { Animated, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import React, { useContext, useEffect, useRef } from 'react'
+import { Animated, Keyboard, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { GradientBackground } from '../components/GradientBackground'
+import { PublicContext } from '../context/PublicContext'
+import { useForm } from '../hooks/useForm'
 import { loginStyles } from '../theme/loginTheme'
 
 export const StudentScreen = () => {
+    const { registro} = useContext(PublicContext);
+    const navigation = useNavigation();
+    //USEFORM
+    const {nombre, onChange} = useForm({
+        nombre : ''
+    })
+
     const fadeAnim = useRef(new Animated.Value(0)).current;
     useEffect(() => {
         Animated.timing(fadeAnim, {
@@ -16,6 +26,16 @@ export const StudentScreen = () => {
             
         };
     }, [])
+    const onRegister = ()=>{
+        console.log(nombre);
+        const obj = {
+            nombre
+        }
+        console.log(obj)
+        registro({nombre})
+        navigation.navigate( 'PublicScreen')
+
+    }
   return (
     <GradientBackground colors = {['white','#80aaff']}>
         <ScrollView contentContainerStyle={styles.mainContainer}
@@ -42,9 +62,12 @@ export const StudentScreen = () => {
             ]
             }>
                 <Animated.Image
-                    source={require("../../assets/Home/munequito.jpg")}
-                    width ={60}
-                    height={60}
+                    source={require("../../assets/Home/munequito.png")}
+                    resizeMode="contain"
+                    style={{
+                        width : 200,
+                        height : 200,
+                    }}
                 />
                     
                 <TextInput
@@ -54,11 +77,18 @@ export const StudentScreen = () => {
                         underlineColorAndroid="black"
                         style = {styles.inputText}
                         selectionColor='black'
-                        // onChangeText={ (value) => onChange(value, 'cedula')}
-                        // value = {cedula}  
-                        // onSubmitEditing={onRegister}
+                        onChangeText={ (value) => onChange(value, 'nombre')}
+                        value = {nombre}  
+                        onSubmitEditing={onRegister}
                         autoCorrect={false}
                     />
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    style = {loginStyles.button}
+                    onPress = {onRegister}
+                >
+                    <Text style = {loginStyles.buttonText}>Continuar</Text>
+                </TouchableOpacity>
             </Animated.View>
                    
         </ScrollView>
@@ -93,7 +123,8 @@ const styles = StyleSheet.create({
         color: 'green'
     },
     inputText : {
+        paddingVertical : 30,
         fontSize : 30,
         color: 'rgba(0,0,0,0.8)'
-    }
+    },
 })
