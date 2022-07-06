@@ -1,26 +1,38 @@
+import React, { useEffect } from 'react'
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Dimensions, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import Sound from "react-native-sound";
 // import Sound from "react-native-sound";
 import { GradientBackground } from "../../../components/GradientBackground"
 const widthScreen = Dimensions.get('window').width;
 const heightScreen = Dimensions.get('window').height;
 export const LanguageScreen = () => {
+    useEffect(() => {
+        console.log("entra");
+        sound();
+        return () => {
+            
+        };
+    }, [])
     const navigation = useNavigation<NativeStackNavigationProp<any>>();
     const sound = ()=>{
-        // const sound = new Sound(
-        //     "hola.mp3",
-        //     Sound.MAIN_BUNDLE,
-        //     error => {
-        //       if (error) {
-        //         console.log("failed to load the sound", error);
-        //         return;
-        //       }
-        //       sound.play(() => sound.release());
-        //     }
-        //   );
-        // // The play dispatcher
-        // sound.play();
+        const sound = new Sound(
+            "lenguaje_letras_presentacion.mp3",
+            Sound.MAIN_BUNDLE,
+            error => {
+              if (error) {
+                console.log("failed to load the sound", error);
+                return;
+              }
+              sound.play(() => sound.release());
+            }
+          );
+        // The play dispatcher
+        sound.play();
+    }
+    const success = () =>{
+        
     }
   return (
     <GradientBackground colors = {['white','#80aaff']}>
@@ -35,16 +47,14 @@ export const LanguageScreen = () => {
         >
             <TouchableOpacity
                 activeOpacity={0.6}
-                onPress = {
-                sound
-                }
+                onPress = {success}
             >
                 <View style = {styles.card}>
                     <Image
-                        source={require('../../../../assets/Home/lenguaje.png')}
+                        source={require('../../../../assets/Home/lettersGame/letterA.png')}
                         style={styles.cardImage}
                     />
-                    <Text style = {styles.cardDescription}>Lenguaje</Text>
+                    {/* <Text style = {styles.cardDescription}>Lenguaje</Text> */}
                 </View>
                 
             </TouchableOpacity>
@@ -57,10 +67,10 @@ export const LanguageScreen = () => {
             >
                 <View style = {styles.card}>
                         <Image
-                            source={require('../../../../assets/Home/matematicas.png')}
+                            source={require('../../../../assets/Home/lettersGame/letterF.png')}
                             style={styles.cardImage}
                         />
-                    <Text style = {styles.cardDescription}>Matemáticas</Text>
+                    {/* <Text style = {styles.cardDescription}>Matemáticas</Text> */}
                 </View>
         
             </TouchableOpacity>
@@ -74,10 +84,10 @@ export const LanguageScreen = () => {
                 <View style = {styles.card}>
                         <Image
                             // source={{uri : 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}}
-                            source={require('../../../../assets/Home/cienciasNaturales.png')}
+                            source={require('../../../../assets/Home/lettersGame/letterH.png')}
                             style={styles.cardImage}
                         />
-                    <Text style = {styles.cardDescription}>Ciencias Naturales</Text>
+                    {/* <Text style = {styles.cardDescription}>Ciencias Naturales</Text> */}
                 </View>
 
             </TouchableOpacity>
@@ -90,10 +100,10 @@ export const LanguageScreen = () => {
             >
                 <View style = {styles.card}>
                         <Image
-                            source={require('../../../../assets/Home/cienciasSociales.png')}
+                            source={require('../../../../assets/Home/lettersGame/letterY.png')}
                             style={styles.cardImage}
                         />
-                    <Text style = {styles.cardDescription}>Ciencias Sociales</Text>
+                    {/* <Text style = {styles.cardDescription}>Ciencias Sociales</Text> */}
                 </View>
             </TouchableOpacity>
             
@@ -128,7 +138,7 @@ const styles = StyleSheet.create({
         fontSize : 20
     },
     cardImage : {
-        height:'50%', 
-        width:'40%'
+        height:'70%', 
+        width:'70%'
     }
 })

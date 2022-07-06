@@ -26,7 +26,7 @@ export const PublicHomeScreen = () => {
             <TouchableOpacity
                 activeOpacity={0.6}
                 onPress = { () =>{
-                    navigation.navigate('Reserva de Citas')
+                    navigation.navigate('LanguageScreen')
                 }}
             >
                 <View style = {styles.card}>
