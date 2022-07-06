@@ -6,10 +6,13 @@ import { GradientBackground } from '../components/GradientBackground'
 import { PublicContext } from '../context/PublicContext'
 import { useForm } from '../hooks/useForm'
 import { loginStyles } from '../theme/loginTheme'
-
+import {NativeStackNavigationProp } from '@react-navigation/native-stack';
+export type RootStackParamList = {
+    PublicHomeScreen: any;
+  };
 export const StudentScreen = () => {
     const { registro} = useContext(PublicContext);
-    const navigation = useNavigation();
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     //USEFORM
     const {nombre, onChange} = useForm({
         nombre : ''
@@ -33,7 +36,7 @@ export const StudentScreen = () => {
         }
         console.log(obj)
         registro({nombre})
-        navigation.navigate( 'PublicScreen')
+        navigation.navigate('PublicHomeScreen',{});
 
     }
   return (
