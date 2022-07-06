@@ -91,13 +91,13 @@ const TabsIOSNavigator = () => {
                         iconName = 'home'
                     break;
                     case 'Lenguaje':
-                        iconName = 'pie-chart';
-                    break
+                        iconName = 'book';
+                    break;
                     case 'Matematicas':
-                        iconName = 'T3';
-
+                        iconName = 'calculate';
+                    break;
                     case 'Ciencias Naturales':
-                        iconName = 'T3';
+                        iconName = 'biotech';
                     break
 
                 }
