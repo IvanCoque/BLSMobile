@@ -5,35 +5,23 @@ import { Dimensions, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, Vi
 import Sound from "react-native-sound";
 // import Sound from "react-native-sound";
 import { GradientBackground } from "../../../components/GradientBackground"
+import { useAudio } from '../../../hooks/useAudio';
 const widthScreen = Dimensions.get('window').width;
 const heightScreen = Dimensions.get('window').height;
 export const LanguageScreen = () => {
+    const {setNuevoAudio} = useAudio("lenguaje_letras_presentacion.mp3")
     useEffect(() => {
         console.log("entra");
-        sound();
         return () => {
             
         };
     }, [])
     const navigation = useNavigation<NativeStackNavigationProp<any>>();
-    const sound = ()=>{
-        const sound = new Sound(
-            "lenguaje_letras_presentacion.mp3",
-            Sound.MAIN_BUNDLE,
-            error => {
-              if (error) {
-                console.log("failed to load the sound", error);
-                return;
-              }
-              sound.play(() => sound.release());
-            }
-          );
-        // The play dispatcher
-        sound.play();
+    
+    const modificarAudio = (nuevoAudio : string) =>{
+        setNuevoAudio(nuevoAudio);
     }
-    const success = () =>{
-        
-    }
+    
   return (
     <GradientBackground colors = {['white','#80aaff']}>
         <SafeAreaView
@@ -47,7 +35,7 @@ export const LanguageScreen = () => {
         >
             <TouchableOpacity
                 activeOpacity={0.6}
-                onPress = {success}
+                onPress = {()=>modificarAudio("hola.mp3")}
             >
                 <View style = {styles.card}>
                     <Image
@@ -61,9 +49,7 @@ export const LanguageScreen = () => {
             
             <TouchableOpacity
                 activeOpacity={0.6}
-                onPress = { () =>{
-                    navigation.navigate('Historial de visitas')
-                }}
+                onPress = { ()=>modificarAudio("hola.mp3")}
             >
                 <View style = {styles.card}>
                         <Image
@@ -77,9 +63,7 @@ export const LanguageScreen = () => {
             
             <TouchableOpacity
                 activeOpacity={0.6}
-                onPress = { () =>{
-                    navigation.navigate('Perfil Usuario')
-                }}
+                onPress = { ()=>modificarAudio("hola.mp3")}
             >
                 <View style = {styles.card}>
                         <Image
@@ -94,9 +78,7 @@ export const LanguageScreen = () => {
             
             <TouchableOpacity
                 activeOpacity={0.6}
-                onPress = { () =>{
-                    navigation.navigate('Avance del tratamiento')
-                }}
+                onPress = { ()=>modificarAudio("hola.mp3")}
             >
                 <View style = {styles.card}>
                         <Image

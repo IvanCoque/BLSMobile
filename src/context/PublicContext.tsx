@@ -4,6 +4,7 @@ import AsyncStorage  from '@react-native-async-storage/async-storage';
 import basicLearningSchoolApi from '../api/basicLearningSchoolApi';
 import { PublicUsuario, LoginResponse, PublicData, PublicRegisterData } from '../interfaces/appInterfaces'
 import { publicReducer, PublicState} from './publicReducer';
+import { useAudio } from '../hooks/useAudio';
 type PublicContextProps = {
     user: PublicUsuario | null;
     registro : (registerData : PublicRegisterData) => void
@@ -14,7 +15,7 @@ const publicInitialState : PublicState = {
 }
 export const PublicContext = createContext({} as PublicContextProps);
 export const PublicProvider = ({children} : any)=>{
-
+    const {} = useAudio("longDurationInstrumentalGameLowVolumeCut.mp3");
     const [state, dispatch] = useReducer(publicReducer, publicInitialState);
     useEffect(()=>{
         console.log("entra")
