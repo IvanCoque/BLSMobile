@@ -1,14 +1,14 @@
 import React from 'react'
-import { PublicUsuario } from '../interfaces/appInterfaces'
+import { Character, PublicUsuario, Side } from '../interfaces/appInterfaces'
 export interface PublicState {
-    user : PublicUsuario |null;
+    user : PublicUsuario | null;
+    character : Character | null;
 }
 type PublicAction =  
     | { type: 'registro', payload : {user: PublicUsuario}}
     | {type: 'addError', payload: string}
-    // | {type : 'removeError'}
-    // | {type: 'notAuthenticated'}
-    // | {type : 'logout'}
+    | {type : 'createCharacter', payload : {character : Character}}
+    | {type : 'modifySide', payload : Side}
 
 export const publicReducer = (state : PublicState, action : PublicAction) : PublicState => {
   switch (action.type) {
@@ -31,7 +31,12 @@ export const publicReducer = (state : PublicState, action : PublicAction) : Publ
             ...state,
             user : action.payload.user
         }
-        
+    case 'createCharacter' : {
+        return {
+            ...state,
+            character : action.payload.character
+        }
+    }
     // case 'logout' :
     // case 'notAuthenticated' :
     //     return {

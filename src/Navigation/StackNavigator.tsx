@@ -15,6 +15,7 @@ import {PublicHomeScreen} from '../screens/Home/PublicHomeScreen';
     // START SUBJECTS
         // START LANGUAGE 
             import {LanguageScreen} from '../screens/PublicGames/Language/LanguageScreen'
+            import { SecondGameLanguageScreen } from '../screens/PublicGames/Language/SecondGameLanguageScreen';
         // END LANGUAGE 
         
         //START MATH
@@ -36,6 +37,7 @@ import {PublicHomeScreen} from '../screens/Home/PublicHomeScreen';
      PublicScreen : undefined,
      PublicHomeScreen : undefined,
      LanguageScreen : undefined
+     SecondGameLanguageScreen : undefined
  }
  const RootStack = createNativeStackNavigator<RootStackParams>();
 export const StackNavigator = () => {
@@ -71,7 +73,8 @@ export const StackNavigator = () => {
                         {/* PANTALLAS ALUMNOS          */}
                             <RootStack.Screen name="PublicHomeScreen" options= {{title : "Public Main Menu"}} component ={PublicHomeScreen}/>  
                             {/* LENGUAJE  */}
-                                <RootStack.Screen name="LanguageScreen" options= {{title : "Public Alumno"}} component ={LanguageScreen}/>  
+                                <RootStack.Screen name="LanguageScreen" options= {{title : "Lenguaje"}} component ={LanguageScreen}/> 
+                                <RootStack.Screen name="SecondGameLanguageScreen" options= {{title : "Segundo juego lenguaje"}} component ={SecondGameLanguageScreen}/>  
                             {/* FIN LENGUAJE  */}
                         {/* FIN PANTALLAS ALUMNOS  */}
                     </>

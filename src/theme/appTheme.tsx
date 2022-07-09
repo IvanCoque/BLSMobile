@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal : 10,
         borderRadius : 10,
         marginVertical : 10
-    }
+    },
     /*
     fondo: {
         flex: 1,
@@ -87,6 +87,24 @@ export const styles = StyleSheet.create({
         textAlign: "right",
     }
     */
+   /* GAME STYLES */
+   controls : {
+    width : 300,
+    height : 300,
+    flexDirection : 'column'
+   },
+   controlRow : {
+    width : 300,
+    height : 100, 
+    flexDirection : 'row',
+    alignItems : 'center',
+    justifyContent : 'center'
+   },
+   control : {
+    width : 100,
+    height : 100,
+    backgroundColor : 'blue'
+   }
     
 
 })

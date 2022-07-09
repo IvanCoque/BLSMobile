@@ -18,9 +18,10 @@ export const useAudio = (initialAudio : string) => {
       );
       // The play dispatcher
       sound.play();
-        return () => {
-            
-        };
+        
+      return () => {
+        console.log("salirda")      
+      };
     }, [modifiedAudio])
 
     const setNuevoAudio = (nuevoAudio:string)=>{

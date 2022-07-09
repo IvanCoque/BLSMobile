@@ -2,7 +2,7 @@ import React, {createContext, useReducer, useEffect} from 'react'
 import AsyncStorage  from '@react-native-async-storage/async-storage';
 
 import basicLearningSchoolApi from '../api/basicLearningSchoolApi';
-import { PublicUsuario, LoginResponse, PublicData, PublicRegisterData } from '../interfaces/appInterfaces'
+import { PublicUsuario, LoginResponse, PublicData, PublicRegisterData, Character } from '../interfaces/appInterfaces'
 import { publicReducer, PublicState} from './publicReducer';
 import { useAudio } from '../hooks/useAudio';
 type PublicContextProps = {
@@ -11,7 +11,8 @@ type PublicContextProps = {
 }
 
 const publicInitialState : PublicState = {
-    user : null
+    user : null,
+    character : null
 }
 export const PublicContext = createContext({} as PublicContextProps);
 export const PublicProvider = ({children} : any)=>{
@@ -42,26 +43,20 @@ export const PublicProvider = ({children} : any)=>{
         dispatch({type : 'addError', payload: errorMessage || 'información incorrecta'})
     }
    }
-//    const  signUp = async ({nombre} : PublicRegisterData)=> {
-//         try{
-//             const resp = await dermatologiaApi.post('/auth/signup', {nombre, cedula, fecha_nacimiento, sexo, estado_civil, religion, ocupacion, lugar_nacimiento, residencia, domicilio, telefono, estado, imagen, username, email, password})
-//             console.log(resp.data);
-//             const token = resp.data.token;
-//             const user = resp.data.datosUsuario;
-//             dispatch({
-//                 type: 'signUp',
-//                 payload :{
-//                     token ,
-//                     user
-//                 }
-//             })
-
-//             await AsyncStorage.setItem('token',token);
-//         }catch(error:any){
-//             console.log(error);
-//             const errorMessage = error.message;
-//             dispatch({type : 'addError', payload: errorMessage || 'información incorrecta'})
-//         }
+   //CHARACTER
+   const createCharacter = (character : Character)=>{
+        dispatch({
+            type : 'createCharacter',
+            payload : {
+                character
+            }
+        })
+   }
+//    const  characterSides = async (character : Character)=> {
+//         dispatch({
+//             type : 'modifySide',
+//             payload : character
+//         })
 //     }
 
 //     const logOut = async()=> {
